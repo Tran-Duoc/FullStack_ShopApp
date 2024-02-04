@@ -1,0 +1,84 @@
+<!-- <app-header></app-header> -->
+<div class="container">
+  <div class="row">
+    <form #loginForm="ngForm">
+      <div class="col-md-6 offset-md-3">
+        <div class="login-form mx-auto">
+          <h2 class="login-header">Đăng nhập</h2>
+          <div class="form-group">
+            <label for="phoneNumber">Phone</label>
+            <input
+              type="text"
+              [(ngModel)]="phoneNumber"
+              (input)="onPhoneChange()"
+              (focus)="loginForm.form.markAllAsTouched()"
+              class="form-control"
+              id="phoneNumber"
+              name="phoneNumber"
+            />
+            <div class="divider-nospace"></div>
+            <p
+              class="text-danger"
+              *ngIf="phoneNumber.length < 6 && loginForm.form.touched"
+            >
+              Phone phải ít nhất có 6 ký tự
+            </p>
+          </div>
+          <div class="mt-5"></div>
+          <div class="form-group password-field">
+            <label for="password">Mật khẩu</label>
+            <input
+              type="password"
+              placeholder="Ít nhất 3 ký tự"
+              class="form-control"
+              id="password"
+              name="password"
+              (focus)="loginForm.form.markAllAsTouched()"
+              [(ngModel)]="password"
+            />
+            <i class="password-toggle fas fa-eye-slash"></i>
+            <div class="divider-nospace"></div>
+            <p
+              class="text-danger"
+              *ngIf="password.length < 3 && loginForm.form.touched"
+            >
+              Mật khẩu phải ít nhất có 3 ký tự
+            </p>
+          </div>
+          <div class="form-group">
+            <div class="form-check checkbox-text">
+              <span style="display: flex">
+                <input type="checkbox" class="form-check-input" id="remember" />
+                <label class="form-check-label text-start" for="remember">
+                  Ghi nhớ đăng nhập</label
+                >
+              </span>
+              <a href="#" class="register-link">Quên mật khẩu</a>
+            </div>
+          </div>
+          <div class="form-group">
+            <select class="form-control access-right">
+              <option selected disabled>Quyền đăng nhập</option>
+              <option>Người dùng</option>
+              <option>Quản trị viên</option>
+            </select>
+          </div>
+          <button
+            type="button"
+            class="login-button"
+            name="login"
+            (click)="login()"
+          >
+            Đăng nhập
+          </button>
+          <div class="divider"></div>
+          <p class="text-center">
+            Bạn chưa đăng ký?
+            <span> <a href="#" class="register-link">Tạo tài khoản</a></span>
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- <app-footer></app-footer> -->
+</div>
